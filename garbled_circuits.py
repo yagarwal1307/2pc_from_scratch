@@ -32,14 +32,14 @@ def label_table(logic_table, output_name, input_names, k=128):
         # TODO: this is wrong. Both the labels should be unique. there is a chance of overlap in this implementation
         labels[var] = [getrandbits(k), getrandbits(k)]
 
-    label_table = []
+    labeled_table = []
     for inp_values in itertools.product((0,1), repeat=len(input_names)):
         output_value = functools.reduce(operator.getitem, inp_values, logic_table)
         output_label = labels[output_name][output_value]
         input_labels = [labels[input_names[i]][v] for i,v in enumerate(inp_values)]
-        label_table.append((output_label, input_labels))
+        labeled_table.append((output_label, input_labels))
 
-    return label_table, labels
+    return labeled_table, labels
 
 def garble_table(labeled_table, k=128):
     result = []
