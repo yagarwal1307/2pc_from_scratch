@@ -3,7 +3,6 @@
 # Coroutines using yield is used to model communication between 2 parties alice and bob
 
 from random import getrandbits
-from gen_rsa_params import gen_rsa_params
 
 def oblivious_transfer_alice(m0, m1, e, d, N, nbits = 2048):
     x0, x1 = getrandbits(nbits), getrandbits(nbits)
